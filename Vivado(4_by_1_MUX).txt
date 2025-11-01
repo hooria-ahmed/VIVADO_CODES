@@ -1,0 +1,22 @@
+
+// 4 x 1 MULTIPLEXER
+module four_by_1_Multiplexer(
+  input in0, in1, in2, in3,
+  input [1:0] sel,
+  output out
+);
+  reg OUT;
+
+  always @(*)
+    begin
+        case (sel)
+          2'b00 : OUT <= in0;
+          2'b01 : OUT <= in1;
+          2'b10 : OUT <= in2;
+          2'b11 : OUT <= in3;
+          default: OUT <= 1'b0;
+      endcase
+  end
+  assign out = OUT;
+endmodule
+          

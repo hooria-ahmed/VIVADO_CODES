@@ -1,0 +1,78 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/27/2025 10:29:34 AM
+// Design Name: 
+// Module Name: TwoTo4Decoder
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module TwoTo4Decoder(
+    input In0,
+    input In1,
+    output Out0,
+    output Out1,
+    output Out2,
+    output Out3,
+    input Sel
+    );
+    
+    
+    reg Out0, Out1, Out2, Out3;
+    
+    always@(In0 or In1 or Sel)
+    begin
+        if (~Sel)
+            begin
+                Out0 = 1'b1;
+                Out1 = 1'b1;
+                Out2 = 1'b1;
+                Out3 = 1'b1;
+            end 
+        else
+            begin
+                if(In0 == 1'b0 && In1 == 1'b0)
+                begin
+                    Out0 = 1'b0;
+                    Out1 = 1'b1;
+                    Out2 = 1'b1;
+                    Out3 = 1'b1;
+                end
+                else if(In0 == 1'b0 && In1 == 1'b1)
+                    begin
+                         Out0 = 1'b1;
+                         Out1 = 1'b0;
+                         Out2 = 1'b1;
+                         Out3 = 1'b1;
+                    end
+                else if(In0 == 1'b1 && In1 == 1'b0)
+                   begin
+                       Out0 = 1'b1;
+                       Out1 = 1'b1;
+                       Out2 = 1'b0;
+                       Out3 = 1'b1;
+                    end
+               else
+                   begin
+                        Out0 = 1'b1;
+                        Out1 = 1'b1;
+                        Out2 = 1'b1;
+                        Out3 = 1'b0;
+                   end
+                
+            end
+    end
+endmodule

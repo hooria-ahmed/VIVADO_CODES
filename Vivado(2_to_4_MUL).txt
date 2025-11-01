@@ -1,0 +1,15 @@
+module two_by_one_mux(
+  input in0,
+  input in1,
+  input sel,
+  output reg outp
+);
+
+  always @(sel or in0 or in1) begin
+    if (sel)
+      outp = in1;
+    else
+      outp = in0;
+  end
+
+endmodule

@@ -1,0 +1,14 @@
+// FULL ADDER
+
+module full_adder(
+  input x, y, cin,
+  output sum, cout
+);
+  wire a, c, d;
+
+  xor (a, x, y);       // a = x XOR y
+  xor (sum, a, cin);   // sum = x XOR y XOR cin
+  and (c, x, y);       // c = x AND y
+  and (d, a, cin);     // d = (x XOR y) AND cin
+  or  (cout, c, d);    // cout = (x AND y) OR ((x XOR y) AND cin)
+endmodule

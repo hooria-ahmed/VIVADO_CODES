@@ -1,0 +1,11 @@
+// HALF ADDER
+
+module half_adder(
+  input x, y,
+  output sum, cout
+);
+
+  xor (sum, x, y);   // sum = x XOR y
+  and (cout, x, y);  // cout = x AND y
+
+endmodule
